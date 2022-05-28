@@ -2,5 +2,6 @@
 
 ***
 
-leetcode, programmers 사이트 위주의 문제풀이를 업로드합니다.
-사용언어는 python3 입니다.
+- leetcode, programmers 사이트 위주의 문제풀이를 업로드합니다.
+
+- 사용언어는 python3 입니다.
