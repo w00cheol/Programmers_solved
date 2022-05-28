@@ -2,7 +2,7 @@
 
 ***
 
-leetcode, programmers 사이트 위주의 문제를 선정합니다.
+programmers 사이트의 문제를 업로드합니다.
 
 정답으로 제출한 코드를 업로드합니다.
 
