@@ -35,6 +35,4 @@
 
 문제에 나온 예와 같습니다.
 
-[출처](https://hsin.hr/coci/archive/2012_2013/contest3_tasks.pdf)
-
 ※ 공지 - 2020년 2월 17일 테스트케이스가 추가되었습니다.
