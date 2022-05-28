@@ -33,7 +33,8 @@
 예제 #2
 ```
 11 = 22 / 2
-```와 같이 2를 3번만 사용하여 표현할 수 있습니다.
+```
+와 같이 2를 3번만 사용하여 표현할 수 있습니다.
 
 
 [출처](https://www.oi.edu.pl/old/php/show.php?ac=e181413&module=show&file=zadania/oi6/monocyfr)
