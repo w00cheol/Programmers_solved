@@ -15,7 +15,7 @@ def solution(distance, rocks, n):
     l, r = 0, distance
     
     # 바위 제거 수와 최소간격은 비례한다는 점을 두고,
-    # 최소 간격의 모든 경우 중 n개 제거로 가능한 경우를 찾는다.
+    # 최소 간격의 모든 경우에 필요한 n을 찾는다.
     while l <= r:
         min_interval = (l+r) // 2
         remove = 0
