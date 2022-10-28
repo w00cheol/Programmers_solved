@@ -1,16 +1,19 @@
-def solution(n, costs):
-    answer = 0
-    costs.sort(key=lambda x:x[2])
-    island = dict(map(lambda x: reversed(x), (enumerate(set(map(lambda x: x[0], costs))|set(map(lambda x: x[1], costs))))))
-    for i in costs:
-        if island[i[0]] != island[i[1]]:
-            answer += i[2]
-            m, M = min(i[0],i[1]), max(i[0],i[1])
-            value1 = island[m]
-            value2 = island[M]
-            for i in island:
-                if island[i] == value2: island[i] = value1
-            cnt = 0
-            for i in island:
-                if island[i] == value1: cnt += 1
-            if cnt == n: return answer
+def solution(n, costs): # prim's algorithm
+    costs.sort(key = lambda x: x[2])
+    island = set((costs[0][0], costs[0][1]))
+    answer = costs[0][2]
+    
+    while len(island) < n:
+        for i in range(len(costs)):
+            if costs[i][0] in island and costs[i][1] in island:
+                continue
+            elif costs[i][0] not in island and costs[i][1] not in island:
+                continue
+
+            answer += costs[i][2]
+            island.add(costs[i][0])
+            island.add(costs[i][1])
+            costs.pop(i)
+            break
+            
+    return answer
