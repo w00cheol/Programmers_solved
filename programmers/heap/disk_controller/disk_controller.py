@@ -1,17 +1,25 @@
 import heapq
+from collections import deque
+
 def solution(jobs):
-    answer = complete = time = working = 0
-    todo = sorted(jobs)
+    jobs = deque(sorted(jobs))
+    lenJobs = len(jobs)
     waiting = []
-    complete += todo[0][0] + todo[0][1]
-    working = [(heapq.heappop(todo))[0]]
-    while todo or waiting or working:
-        while todo and todo[0][0] == time:
-            heapq.heappush(waiting, [todo[0][1],todo[0][0]])
-            heapq.heappop(todo)
-        if time == complete: answer += time - working.pop()
-        if time >= complete and waiting:
-            working.append(waiting[0][1])
-            complete = time + (heapq.heappop(waiting))[0]
-        time += 1
-    return answer//len(jobs)
+    total = 0
+    
+    while jobs or waiting:
+        if waiting: # if any task should be started instantly
+            cost, start = heapq.heappop(waiting)
+            finish += cost
+        else: # nothing to do for now
+            cost, start = jobs.popleft()[::-1]
+            finish = start + cost
+            
+        total += finish - start
+        
+        # while process is running,
+        # recieve and rank other tasks in order of cost
+        while jobs and jobs[0][0] <= finish:
+            heapq.heappush(waiting, jobs.popleft()[::-1])
+            
+    return total // lenJobs
