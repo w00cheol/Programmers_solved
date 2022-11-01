@@ -1,11 +1,12 @@
 def solution(n, lost, reserve):
-    count = 0
-    L = list(sorted(set(lost)-set(reserve)))
-    R = list(sorted(set(reserve)-set(lost)))
-    for i in range(len(L)):
-        if L[i]-1 in R:
-            R.remove(L[i]-1)
-        elif L[i]+1 in R:
-            R.remove(L[i]+1)
-        else: count += 1
-    return n - count
+    L = list(set(lost)-set(reserve))
+    R = set(reserve)-set(lost)
+    
+    for l in L:
+        if l-1 in R:
+            R.remove(l-1)
+        elif l+1 in R:
+            R.remove(l+1)
+        else: n -= 1
+        
+    return n
