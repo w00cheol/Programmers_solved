@@ -1,20 +1,15 @@
+from collections import deque
+
 def solution(priorities, location):
-    index = []
-    printer = []
-    re = j = 0
-    lenP = len(priorities)
-    for _ in range(lenP):
-        index.append(_)
-    while j < lenP-1:
-        re = 0
-        for i in index[j+1:]:
-            if priorities[index[j]] < priorities[i]:
-                index.append(index[j])
-                del index[j]
-                re = 1
-                break
-        if not re:
-            printer.append(index[j])
-            j += 1
-    printer.append(index[j])
-    return printer.index(location)+1
+    q = deque(enumerate(priorities))
+    rank = 0
+    
+    while q:
+        loc, priority = q.popleft()
+        
+        if any(priority < work[1] for work in q):
+            q.append((loc, priority))
+        else:
+            rank += 1
+            if loc == location:
+                return rank
