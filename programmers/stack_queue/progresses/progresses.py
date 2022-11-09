@@ -1,17 +1,18 @@
+from math import ceil
+
 def solution(progresses, speeds):
     answer = []
-    day = cnt = 0
-    lenP = len(progresses)
-    for i in range(lenP):
-        progresses[i] = -((-100+progresses[i])//speeds[i])
-    while lenP:
-        if day >= progresses[0]:
-            del progresses[0]
-            lenP = lenP - 1
-            cnt = cnt + 1
-            if lenP == 0: answer.append(cnt)
-            continue
-        elif cnt: answer.append(cnt)
-        cnt = 0
-        day = day + 1
+    days = [ceil((100 - progresses[i]) / speeds[i]) for i in range(len(speeds))]
+
+    runner = 0
+    while runner < len(progresses):
+        deploy = 0
+        treshold = days[runner]
+        
+        while runner < len(progresses) and days[runner] <= treshold:
+            deploy += 1
+            runner += 1
+        
+        answer.append(deploy)
+    
     return answer
