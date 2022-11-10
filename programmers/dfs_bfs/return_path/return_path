@@ -1,0 +1,27 @@
+from collections import defaultdict, deque
+
+def solution(n, roads, sources, destination):
+    answer = [-1 for _ in range(n + 1)]
+    dic = defaultdict(list)
+    depth = 0
+    
+    for src, dst in roads:
+        dic[src].append(dst)
+        dic[dst].append(src)
+    
+    q = deque()
+    q.append((destination, depth))
+    visit = set()
+
+    while q:
+        src, dpt = q.popleft()
+        if src in visit:
+            continue
+            
+        visit.add(src)
+        answer[src] = dpt
+
+        for i in dic[src]:
+            q.append((i, dpt + 1))
+
+    return [answer[source] for source in sources]
