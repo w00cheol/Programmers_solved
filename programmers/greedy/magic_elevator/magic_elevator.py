@@ -10,9 +10,8 @@ def solution(storey):
                 carry = 1
             else:
                 storey[idx - 1] += 1
-            continue
-        
-        if storey[idx] <= 4:
+            
+        elif storey[idx] <= 4:
             answer += storey[idx]
             
         elif storey[idx] >= 6:
